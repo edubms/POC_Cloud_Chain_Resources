@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0
 pragma solidity ^0.8.4;
 
-contract Payment {
+contract Payment { 
     event Deposit(address sender, uint amount, uint balance);
     event Withdraw(uint amount, uint balance);
     event Transfer(address to, uint amount, uint balance);
