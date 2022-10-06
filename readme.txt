@@ -4,7 +4,7 @@ Para fazer o versionamento de código foi utilizado o GitHub.
 As linguagens utilizadas foram solidity para o contrato e Javascript usando o framework React para o frontend e Node.js para o backend.
 Foi utilizado a rede de testes do Ethereum Rinkeby e o plugin MetaMask que serve como carteira, para abastecer o valor não comercial,é usado o site https://faucet.rinkeby.io/
 
-Alterar o ccres.js, App.js e  .env 
+Alterar o ccres.js, App.js test
 
 Palavras da carteira de teste 
 fringe fury remind tail hockey hybrid fresh announce make paper kitchen math

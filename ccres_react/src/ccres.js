@@ -11,20 +11,20 @@ const abi = [
     type: "constructor",
     signature: "constructor",
   },
+  // {
+  //   inputs: [],
+  //   name: "gerente",
+  //   outputs: [{ internalType: "address", name: "", type: "address" }],
+  //   stateMutability: "view",
+  //   type: "function",
+  //   constant: true,
+  //   signature: "0x9e18d087",
+  // },
   {
     inputs: [],
-    name: "gerente",
-    outputs: [{ internalType: "address", name: "", type: "address" }],
-    stateMutability: "view",
-    type: "function",
-    constant: true,
-    signature: "0x9e18d087",
-  },
-  {
-    inputs: [],
-    name: "getJogadores",
+    name: "getComprador",
     outputs: [
-      { internalType: "address payable[]", name: "", type: "address[]" },
+      { internalType: "address payable", name: "", type: "address" },
     ],
     stateMutability: "view",
     type: "function",
@@ -32,31 +32,32 @@ const abi = [
     signature: "0x0040b837",
   },
   {
-    inputs: [{ internalType: "uint256", name: "", type: "uint256" }],
-    name: "jogadores",
-    outputs: [{ internalType: "address payable", name: "", type: "address" }],
-    stateMutability: "view",
-    type: "function",
-    constant: true,
-    signature: "0xfdcd0731",
-  },
-  {
     inputs: [],
-    name: "jogar",
+    name: "comprar",
     outputs: [],
     stateMutability: "payable",
     type: "function",
     payable: true,
     signature: "0xbd6ac043",
   },
-  {
-    inputs: [],
-    name: "sorteio",
-    outputs: [],
-    stateMutability: "nonpayable",
+  // {
+  //   inputs: [],
+  //   name: "sorteio",
+  //   outputs: [],
+  //   stateMutability: "nonpayable",
+  //   type: "function",
+  //   signature: "0xc1f27e47",
+  // }
+   {
+    inputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+    name: "comprador",
+    outputs: [{ internalType: "address payable", name: "", type: "address" }],
+    stateMutability: "view",
     type: "function",
-    signature: "0xc1f27e47",
-  },
+    constant: true,
+    signature: "0xfdcd0731",
+  }
+
 ];
 
 //exporte o contrato

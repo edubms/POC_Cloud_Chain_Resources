@@ -2,28 +2,29 @@ import React, { useState, useEffect } from "react";
 // Configuração para requisições na rede
 import web3 from "./web3";
 // Informação do contrato
-import loteria from "./ccres";
+//import loteria from "./ccres";
+import ccres from "./ccres";
 
 const App = () => {
   // Cria variáveis e funções de alteração
-  // const [gerente, setGerente] = useState("");
+ const [comprador, setComprador] = useState("");
   // const [jogadores, setJogadores] = useState("");
-  // const [saldo, setSaldo] = useState("");
-  // const [value, setValue] = useState("");
-  // const [mensagem, setMensagem] = useState("");
+ const [saldo, setSaldo] = useState("");
+ const [value, setValue] = useState("");
+ const [mensagem, setMensagem] = useState("");
 
-  // // Função assincrona que carrega os dados do contrato
-  // const carregarDados = async () => {
-  //   // Pega a carteira do gerente do contrato
-  //   const _gerente = await loteria.methods.gerente().call();
-  //   // Pega a carteira dos jogadores
-  //   const _jogadores = await loteria.methods.getJogadores().call();
-  //   // Pega o valor total vinculado ao contrato
-  //   const _saldo = await web3.eth.getBalance(loteria.options.address);
+  // Função assincrona que carrega os dados do contrato
+  const carregarDados = async () => {
+    // Pega a carteira do gerente do contrato
+//    const _gerente = await ccres.methods.gerente().call();
+    // Pega a carteira dos jogadores
+    const _comprador = await ccres.methods.getComprador().call();
+    // Pega o valor total vinculado ao contrato
+     const _saldo = await web3.eth.getBalance(ccres.options.address);
 
     // Armazena os valores nas variáveis de gerente, jogador e saldo
-    setGerente(_gerente);
-    setJogadores(_jogadores);
+//    setGerente(_gerente);
+    setComprador(_comprador);
     setSaldo(_saldo);
     setValue("");
   };
@@ -33,8 +34,8 @@ const App = () => {
     carregarDados();
   }, []);
 
-  // * Realiza uma aposta
-  const apostar = async (event) => {
+  // * Realiza a compra 
+  const comprar = async (event) => {
     try {
       // Evita que a página seja recarregada
       event.preventDefault();
@@ -42,11 +43,11 @@ const App = () => {
       setMensagem("Aguardando a  validação da transação...");
       // Pega contas do metamask
       const contas = await web3.eth.getAccounts();
-      // console.log(contas);
+      console.log(contas);
 
       // Joga passando valor da conta principal e o valor de ether em wei
-      await loteria.methods.jogar().send({
-        from: contas[0],
+      await ccres.methods.pagar().send({
+        from: comprador,
         value: web3.utils.toWei(value, "ether"),
       });
       // Recarrega dados da página
@@ -63,31 +64,31 @@ const App = () => {
       }
     }
   };
-  // * Realiza sorteio
-  const comprar = async () => {
-    try {
-      // Altera mensagem
-      setMensagem("Aguardando processamento...");
-      // Pega contas do metamask
-      const contas = await web3.eth.getAccounts();
-      // Solicita sorte e manda conta que está realizando o sorteio
-      await ccres.methods.sorteio().send({
-        from: contas[0],
-      });
-      // Recarrega dados da página
-      await carregarDados();
-      // Altera mensagem
-      setMensagem("Um vencedor foi escolhido!");
-    } catch (error) {
-      // Caso o usuário cancele a solicitação no metamask
-      if (error.code === 4001) {
-        setMensagem("Transação cancelada!");
-      } else {
-        // Caso algo esteja fora das políticas do contrato
-        setMensagem("Transação vai contra regras do contrato");
-      }
-    }
-  };
+  // // * Realiza sorteio
+  // const comprar = async () => {
+  //   try {
+  //     // Altera mensagem
+  //     setMensagem("Aguardando processamento...");
+  //     // Pega contas do metamask
+  //     const contas = await web3.eth.getAccounts();
+  //     // Solicita sorte e manda conta que está realizando o sorteio
+  //     await ccres.methods.pagar().send({
+  //       from: comprador,
+  //     });
+  //     // Recarrega dados da página
+  //     await carregarDados();
+  //     // Altera mensagem
+  //     setMensagem("Voce adquiriu recursos computacionais!");
+  //   } catch (error) {
+  //     // Caso o usuário cancele a solicitação no metamask
+  //     if (error.code === 4001) {
+  //       setMensagem("Transação cancelada!");
+  //     } else {
+  //       // Caso algo esteja fora das políticas do contrato
+  //       setMensagem("Transação vai contra regras do contrato");
+  //     }
+  //   }
+  // };
   return (
     <div>
       <h2>Compra de recursos</h2>

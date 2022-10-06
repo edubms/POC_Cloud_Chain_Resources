@@ -10,19 +10,19 @@ let contas;
 beforeEach(async () => {
   contas = await web3.eth.getAccounts();
 
-  loteria = await new web3.eth.Contract(abi)
+  ccres = await new web3.eth.Contract(abi)
     .deploy({ data: evm.bytecode.object })
     .send({ from: contas[0], gas: "1000000" });
 });
-describe("Contrato Loteria", () => {
+describe("Contrato CCRes", () => {
   it("Deploy a contract", () => {
     // console.log(inbox);
-    assert.ok(loteria.options.address);
+    assert.ok(ccres.options.address);
   });
   it("Permite que uma conta seja adicionada", async () => {
     await loteria.methods.jogar().send({
       from: contas[0],
-      value: web3.utils.toWei("0.2", "ether"),
+      value: web3.utils.toWei("0.5", "ether"),
     });
 
     const jogadores = await loteria.methods.getJogadores().call({

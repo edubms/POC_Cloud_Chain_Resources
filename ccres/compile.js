@@ -3,15 +3,15 @@ const fs = require("fs"); // e garantir a compatibilidade de sistemas operaciona
 const solc = require("solc");
 
 // Pega o arquivo Inbox.sol e atribui a variável
-const LoteriaPath = path.resolve(__dirname, "contracts", "Loteria.sol");
-const source = fs.readFileSync(LoteriaPath, "utf8");
+const CCResPath = path.resolve(__dirname, "contracts", "CCRes.sol");
+const source = fs.readFileSync(CCResPath, "utf8");
 
 // * Mais informações sobre o input e output
 // * https://docs.soliditylang.org/en/v0.7.4/using-the-compiler.html#output-description
 var input = {
   language: "Solidity",
   sources: {
-    "Loteria.sol": {
+    "CCRes.sol": {
       content: source,
     },
     // Pode-se adicionar otros contratos, caso exista
@@ -37,4 +37,4 @@ let contratoCompilado = JSON.parse(solc.compile(JSON.stringify(input)));
 // );
 
 // Pedimos apenas o nosso contrato para exportação
-module.exports = contratoCompilado.contracts["Loteria.sol"].Loteria;
+module.exports = contratoCompilado.contracts["CCRes.sol"].Loteria;
