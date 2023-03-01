@@ -34,6 +34,14 @@ const App = () => {
     carregarDados();
   }, []);
 
+  const verifica_saldo = async (event) => {
+    try{
+      setMensagem("Saldo atual é:",saldo);
+    }
+    catch{
+      setMensagem("Erro ao consultar o saldo.")
+    }
+  }
   // * Realiza a compra 
   const comprar = async (event) => {
     try {
@@ -94,6 +102,7 @@ const App = () => {
       <h2>Compra de recursos</h2>
       <h4>Deseja comprar recursos? </h4>
       <button onClick={comprar}> Comprar </button>
+      <button onClick={verifica_saldo}> Saldo atual</button>
       {/* Mostra mensagem ao usuário */}
       <h1>{mensagem}</h1>
     </div>

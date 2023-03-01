@@ -1,11 +1,19 @@
 {
   "name": "ccres",
   "version": "1.0.0",
-  "description": "",
+  "description": "Texto para ser utilizado no TCC",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edubms/POC_Cloud_Chain_Resources.git"
+  },
+  "bugs": {
+    "url": "https://github.com/edubms/POC_Cloud_Chain_Resources/issues"
+  },
+  "homepage": "https://github.com/edubms/POC_Cloud_Chain_Resources#readme"
 }

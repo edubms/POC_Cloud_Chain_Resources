@@ -1,8 +1,8 @@
 // importa o web3
 import web3 from "./web3";
 // Endereço do contrato gerado no deploy
-// const address = "0x74F774570C3DBA08653151C75124289243d68b47";
-const address = "Adicionar endereço do deploy aqui";
+const address = "0xd9145CCE52D386f254917e481eB44e9943F39138";
+// const address = "Adicionar endereço do deploy aqui";
 // Abi gerada no deploy do contrato
 const abi = [
   {
