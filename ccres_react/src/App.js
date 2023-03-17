@@ -99,12 +99,37 @@ const App = () => {
   // };
   return (
     <div>
-      <h2>Compra de recursos</h2>
-      <h4>Deseja comprar recursos? </h4>
-      <button onClick={comprar}> Comprar </button>
-      <button onClick={verifica_saldo}> Saldo atual</button>
+      <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css'></link>
+      <body>
+        <h2 class="page-header">Compra de recursos</h2>
+        <div class="sub-header">
+          <h4>Deseja comprar recursos? </h4>
+          <button class="btn-sm" onClick={verifica_saldo}> Saldo atual</button>
+        </div>
+      <div class="container">
+        <label>Insira o endereço da sua carteira:</label>
+        <input class="form-control" type="text" id="wallet_address_input" name="wallet" placeholder="0x5e4B0675d85c995cABb06419199Ec5D958f04e73"></input>
+      </div>
+      <div class="container">
+        <label>Quanto deseja depositar?</label>
+        <input class="form-control" type="text" id="deposit_value" name="wallet" ></input>
+      </div>
+      <div class="container">
+          <select class="active">
+            {/* Colocar aqui as opções de compra */}
+          </select>
+          <br></br>
+          <button class="btn-success" onClick={comprar}> Comprar </button>
+          {/* fazer uma função que carrega as informações ao abrir a tela {onCreate} */}
+      </div>
+      
+
+      
       {/* Mostra mensagem ao usuário */}
       <h1>{mensagem}</h1>
+
+      </body>
+
     </div>
   );
 };
