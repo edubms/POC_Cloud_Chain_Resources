@@ -37,4 +37,4 @@ let contratoCompilado = JSON.parse(solc.compile(JSON.stringify(input)));
 // );
 
 // Pedimos apenas o nosso contrato para exportação
-module.exports = contratoCompilado.contracts["CCRes.sol"].Loteria;
+module.exports = contratoCompilado.contracts["CCRes.sol"].CCRess;

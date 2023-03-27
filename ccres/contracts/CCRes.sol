@@ -68,9 +68,10 @@ constructor(){
         _;
     }
 
-    function withdraw(uint _amount) public onlyComprador{
-        comprador.transfer(_amount);
-        emit Withdraw(_amount,address(this).balance);
+    function withdraw(uint256 amount) public {
+        require(msg.sender == comprador, "Apenas o comprador pode sacar.");
+        require(amount <= address(this).balance, "Saldo insuficiente.");
+        comprador.transfer(amount);
     }
 
     function transfer(address payable _to, uint _amount) public onlyComprador{
@@ -82,6 +83,7 @@ constructor(){
     function pagar() public payable onlyComprador{
         require(contract_retain.balance >= 0.5 ether);
 
+        
         deliver_IP();
         addVenda(to,address(this),sold_ip);
         transfer(to, 0.5 ether);        
