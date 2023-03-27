@@ -50,8 +50,8 @@ const App = () => {
       // Altera valor da mensagem exibida
       setMensagem("Aguardando a  validação da transação...");
       // Pega contas do metamask
-      const contas = await web3.eth.getAccounts();
-      console.log(contas);
+      // const contas = await web3.eth.getAccounts();
+      // console.log(contas);
 
       // Joga passando valor da conta principal e o valor de ether em wei
       await ccres.methods.pagar().send({
@@ -72,6 +72,19 @@ const App = () => {
       }
     }
   };
+  // const withdraw = async (amount) => {
+  //   try {
+  //     const accounts = await ethereum.request({ method: 'eth_requestAccounts' });
+  //     const account = accounts[0];
+  //     const provider = new ethers.providers.Web3Provider(window.ethereum);
+  //     const signer = provider.getSigner(account);
+  //     const contract = new ethers.Contract(contractAddress, contractAbi, signer);
+  //     const tx = await contract.withdraw(ethers.utils.parseEther(amount.toString()));
+  //     console.log(`Transaction hash: ${tx.hash}`);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
   // // * Realiza sorteio
   // const comprar = async () => {
   //   try {
@@ -99,9 +112,14 @@ const App = () => {
   // };
   return (
     <div>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
       <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css'></link>
-      <body>
+      <body class="p-3 mb-2 bg-info text-white">
         <h2 class="page-header">Compra de recursos</h2>
+        <a href="./subscription.html" class="btn btn-primary">Cadastrar</a>
+        <a href="./login.html" class="btn btn-secondary">Login</a>
         <div class="sub-header">
           <h4>Deseja comprar recursos? </h4>
           <button class="btn-sm" onClick={verifica_saldo}> Saldo atual</button>
@@ -122,8 +140,25 @@ const App = () => {
           <button class="btn-success" onClick={comprar}> Comprar </button>
           {/* fazer uma função que carrega as informações ao abrir a tela {onCreate} */}
       </div>
-      
+      <div class="sub-header">
+        <h5>Venda de Recursos</h5>
+      </div>
+      <div class="container">
 
+        <label>Digite o ip do seu recurso:</label>
+        <input class="form-control" type="text" id="resource_ip_address" name="resource_ip_address" ></input>
+        <label>Digite o login do seu recurso:</label>
+        <input class="form-control" type="text" id="resource_login" name="resource_login" ></input>
+        <label>Digite a senha do seu recurso:</label>
+        <input class="form-control" type="text" id="resource_password" name="resource_password" ></input>
+        <label>Digite o espaço do seu recurso(GB):</label>
+        <input class="form-control" type="number" id="resource_size" name="resource_size" ></input>
+        <label>Digite o preço para vender seu recurso(valor em Ether):</label>
+        <input class="form-control" type="number" step=".0001" min="0" id="resource_price" name="resource_price" ></input>
+        <p></p>
+        <button class="btn-sm" /*onClick={cadastra_recurso}*/> Cadastrar recurso</button>
+
+      </div>
       
       {/* Mostra mensagem ao usuário */}
       <h1>{mensagem}</h1>
