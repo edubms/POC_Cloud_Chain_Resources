@@ -23,6 +23,7 @@ struct Vendas{
     address payable public contract_retain;
     string sold_ip;
 
+    mapping(address => uint256) balance;
 
 mapping (uint => Node) public nodes;
 event savingsEvent(uint indexed _nodeId);
@@ -68,9 +69,9 @@ constructor(){
         _;
     }
 
-    function withdraw(uint256 amount) public {
+    function withdraw(uint256 amount) payable public {
         require(msg.sender == comprador, "Apenas o comprador pode sacar.");
-        require(amount <= address(this).balance, "Saldo insuficiente.");
+        require(msg.value <= address(this).balance, "Saldo insuficiente.");
         comprador.transfer(amount);
     }
 
@@ -91,7 +92,7 @@ constructor(){
 
 
     function random() private view returns(uint){
-        return uint(keccak256(abi.encodePacked(block.timestamp,block.difficulty)));
+        return uint(keccak256(abi.encodePacked(block.timestamp,block.prevrandao)));
     }
  
 
@@ -105,15 +106,17 @@ constructor(){
         return (nodes[index].ips, nodes[index].password); 
     }
 
-        function getComprador() public view returns(address payable){
+        function getComprador() public returns(address payable){
+            comprador  = payable(address(this));
         return comprador;
     }
 
         function get_contract_retain_Balance() public view returns (uint) {
         return contract_retain.balance;
     }
-          function get_your_Balance() public view returns (uint) {
-        return address(this).balance;
+
+    function myBalance() external view returns (uint256) {
+          return address(this).balance;
     }
 
 

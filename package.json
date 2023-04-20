@@ -15,5 +15,15 @@
   "bugs": {
     "url": "https://github.com/edubms/POC_Cloud_Chain_Resources/issues"
   },
-  "homepage": "https://github.com/edubms/POC_Cloud_Chain_Resources#readme"
+  "homepage": "https://github.com/edubms/POC_Cloud_Chain_Resources#readme",
+  "dependencies": {
+    "@truffle/hdwallet-provider": "^2.1.9",
+    "dotenv": "^16.0.3",
+    "solc": "^0.8.19",
+    "web3": "^1.9.0"
+  },
+  "devDependencies": {
+    "ganache-cli": "^6.12.2",
+    "mocha": "^10.2.0"
+  }
 }
